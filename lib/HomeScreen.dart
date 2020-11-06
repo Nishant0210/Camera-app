@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_tts/flutter_tts.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -6,6 +7,19 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  FlutterTts flutterTts = FlutterTts();
+  var text = "Please choose an image";
+
+  Future speak(String text) async {
+    if (text != null && text.isNotEmpty) {
+      await flutterTts.setLanguage("en-IN");
+      await flutterTts.setSpeechRate(1.0);
+      await flutterTts.setVolume(1.0);
+      await flutterTts.setPitch(1.0);
+      await flutterTts.speak(text);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,6 +39,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   color: Colors.black38,
                   onPressed: () {
                     Navigator.pushNamed(context, "Gallery");
+                    speak(text);
                   },
                   label: Text(
                     "Gallery",
@@ -44,6 +59,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   color: Colors.black38,
                   onPressed: () {
                     Navigator.pushNamed(context, "Camera");
+                    speak(text);
                   },
                   label: Text(
                     "Camera",

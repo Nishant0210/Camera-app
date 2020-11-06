@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:camera_app/HomeScreen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_tts/flutter_tts.dart';
 
 class SplashScreen extends StatefulWidget {
   @override
@@ -8,8 +9,17 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
+  FlutterTts flutterTts = FlutterTts();
+  var text = "Welcome to our image classification app";
+  Future speak(text) async {
+    await flutterTts.setLanguage("en-IN");
+    await flutterTts.setPitch(1.0);
+    await flutterTts.speak(text);
+  }
+
   @override
   void initState() {
+    speak(text);
     super.initState();
     Timer(
         Duration(seconds: 5),
