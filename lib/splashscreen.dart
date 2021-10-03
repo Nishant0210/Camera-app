@@ -56,7 +56,7 @@ class _SplashScreenState extends State<SplashScreen> {
             height: 10,
           ),
           Text(
-            "Group No - 22",
+            "Group No : 22",
             style: TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.w500,
